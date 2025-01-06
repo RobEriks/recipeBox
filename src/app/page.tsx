@@ -2,16 +2,24 @@
 
 import React, { useState } from "react"
 
+type Recipe = {
+  id: number;
+  name: string;
+};
 
 
-const recipes = [
-  { id: 1, name: "Chicken Curry"},
-  { id: 2, name: "Lasagne"},
-  { id: 3, name: "Tacos"},
-]
+
 
 
 export default function Home() {
+
+  const [recipes, setRecipes] = useState<Recipe[]>([
+    { id: 1, name: "Chicken Curry"},
+    { id: 2, name: "Lasagne"},
+    { id: 3, name: "Tacos"},
+  ])
+
+
   return (
     <div className="min-h-screen p-8 bg-gray-500">
       <h1 className="text-3xl font-bold mb-6">Recipe Box</h1>
