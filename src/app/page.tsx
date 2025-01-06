@@ -19,6 +19,13 @@ export default function Home() {
     { id: 3, name: "Tacos"},
   ])
 
+  const addRecipe = () => {
+    const newRecipe: Recipe = {
+      id: recipes.length + 1,
+      name: "New Recipe"
+    }
+    setRecipes([...recipes, newRecipe])
+  }
 
   return (
     <div className="min-h-screen p-8 bg-gray-500">
