@@ -18,11 +18,13 @@ export default function Home() {
     { id: 2, name: "Lasagne"},
     { id: 3, name: "Tacos"},
   ])
+  const [newRecipeName, setNewRecipeName] = useState<string>("")
 
   const addRecipe = () => {
+    if (!newRecipeName.trim()) return
     const newRecipe: Recipe = {
       id: recipes.length + 1,
-      name: "New Recipe"
+      name: newRecipeName
     }
     setRecipes([...recipes, newRecipe])
   }
