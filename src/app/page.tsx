@@ -1,14 +1,11 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 type Recipe = {
   id: number;
   name: string;
 };
-
-
-
 
 
 export default function Home() {
@@ -19,6 +16,17 @@ export default function Home() {
     { id: 3, name: "Tacos"},
   ])
   const [newRecipeName, setNewRecipeName] = useState<string>("")
+
+  useEffect(() => {
+    const savedRecipes = localStorage.getItem("recipes")
+    if (savedRecipes) {
+      setRecipes(JSON.parse(savedRecipes))
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("recipes", JSON.stringify(recipes))
+  }, [recipes])
 
   const addRecipe = () => {
     if (!newRecipeName.trim()) return
