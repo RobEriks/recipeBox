@@ -30,6 +30,11 @@ export default function Home() {
     setNewRecipeName("")
   }
 
+  const deleteRecipe = (id: number) => {
+    const updatedRecipes = recipes.filter((recipe) => recipe.id !== id)
+    setRecipes(updatedRecipes)
+  }
+
   return (
     <div className="min-h-screen p-8 bg-gray-500">
       <h1 className="text-3xl font-bold mb-6">Recipe Box</h1>
@@ -55,6 +60,10 @@ export default function Home() {
          {recipes.map((recipe) => (
           <li key={recipe.id} className="p-4 bg-white rounded-lg shadow-md text-blue-600 font-bold">
             {recipe.name}
+            <button
+              onClick={() => deleteRecipe(recipe.id)}
+              className="ml-2 px-1 py-1 bg-red-500 text-white rounded-lg text-sm"
+              >Delete</button>
             </li>
          ))}
 
