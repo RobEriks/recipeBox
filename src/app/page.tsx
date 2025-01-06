@@ -27,6 +27,7 @@ export default function Home() {
       name: newRecipeName
     }
     setRecipes([...recipes, newRecipe])
+    setNewRecipeName("")
   }
 
   return (
